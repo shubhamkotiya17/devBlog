@@ -10,6 +10,11 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path : '',
     component : NavbarComponent,
     children : [
@@ -27,14 +32,11 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  },
-  { path: '**', component: PageNotFoundComponent}
-
-
+  { 
+    path: '**', 
+    component: 
+    PageNotFoundComponent
+  }
 ];
 
 @NgModule({
