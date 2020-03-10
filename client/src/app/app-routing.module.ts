@@ -3,16 +3,33 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AboutComponent } from './about/about.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
   {
-    path : 'home',
-    component : HomeComponent
+    path : '',
+    component : NavbarComponent,
+    children : [
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'about',
+        component: AboutComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
+      }
+    ]
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '',
     pathMatch: 'full'
   },
   { path: '**', component: PageNotFoundComponent}

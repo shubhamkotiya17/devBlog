@@ -13,6 +13,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     NavbarComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
