@@ -6,8 +6,14 @@
         <a mat-button [routerLink]="'/home'" routerLinkActive="active"> Home </a>
         <a mat-button [routerLink]="'/create-account'">  About </a>
         <a mat-button [routerLink]="'/contacts'"> Profile </a>
-        <a mat-button [routerLink]="'/create-contact'"> My Youtube </a>
-        
+       <!-- // youtube link to my channel -->
+        <button mat-raised-button
+        matTooltip="Subscribe To My Youtube Channel"
+        aria-label="Subscribe To My Youtube Channel">
+          <span style=" font-size: 30px; background-color: whitesmoke;">
+            <a href="https://www.youtube.com/channel/UCVQ0gLN4U8BoxomGOd7DDcA?view_as=subscriber" target="_blank" style="color: red;"> <i class="fa fa-youtube" aria-hidden="true" ></i></a>
+          </span>  
+        </button>
       </div>
     </mat-toolbar-row>
   
