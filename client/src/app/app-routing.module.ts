@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,14 @@ const routes: Routes = [
     path : '',
     component : NavbarComponent,
     children : [
+      {
+        path : 'login',
+        component : LoginComponent
+      },
+      {
+        path : 'signup',
+        component : SignupComponent
+      },
       {
         path: 'home',
         component: HomeComponent

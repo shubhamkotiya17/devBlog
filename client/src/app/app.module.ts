@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // material modules
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatInputModule, MatSelectModule , MatFormFieldModule
+import { MatInputModule, MatSelectModule , MatFormFieldModule, MatRadioModule
 } from '@angular/material';
 import {MatNativeDateModule, MatCardModule,MatTooltipModule} from '@angular/material';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,6 +15,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -24,11 +27,16 @@ import { ProfileComponent } from './profile/profile.component';
     PageNotFoundComponent,
     HomeComponent,
     AboutComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
+    MatRadioModule,
     MatTooltipModule,
     AppRoutingModule,
     MatDatepickerModule,
