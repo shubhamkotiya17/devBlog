@@ -21,8 +21,9 @@
         <p>
             <mat-form-field style="width: 70%;">
                 <mat-label>Email <span style="color: red;">*</span></mat-label>
+                <input type="email" matInput  formControlName="email">
+                <mat-error >{{getErrorMessage()}}</mat-error>
 
-            <input type="email" matInput  formControlName="email" >
             </mat-form-field>
         </p>
 
@@ -45,15 +46,11 @@
             <mat-form-field style="width: 70%;">
             <mat-label>Confirm Password <span style="color: red;">*</span></mat-label>
 
-            <input type="password" matInput [(ngModel)]="confirmPassword"  [ngModelOptions]="{standalone: true}" >
+            <input type="password" matInput [(ngModel)]="confirmPassword"  formControlName="confirmPassword">
             </mat-form-field>
         </p>
 
-        <p *ngIf="confirmPassword != password && (confirmPassword.length >0)">
-                <mat-label style="color: red;">Not valid</mat-label>
-        </p>
-
-        {{confirmPassword}} ---------- {{password}}
+       
 
         <button mat-button color="primary" type="submit" style="background-color: blueviolet; color: whitesmoke;">SIGNUP</button>
 
