@@ -1,0 +1,62 @@
+<mat-card style="width: 40%; margin-top: 10%; margin-left: 7%;">
+    <mat-card-title>SIGN UP</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <p>
+            <mat-form-field style="width: 70%;">
+             <mat-label>First Name  <span style="color: red;">*</span></mat-label>
+
+            <input type="text" matInput formControlName="firstName" >
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field style="width: 70%;">
+                <mat-label>Last Name <span style="color: red;">*</span></mat-label>
+
+            <input type="text" matInput formControlName="lastName" >
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field style="width: 70%;">
+                <mat-label>Email <span style="color: red;">*</span></mat-label>
+
+            <input type="email" matInput  formControlName="email" >
+            </mat-form-field>
+        </p>
+
+        <mat-radio-group >
+            <mat-label>Gender <span style="color: red;">*</span></mat-label><br><br>
+
+            <mat-radio-button name="gender" value="male">Male</mat-radio-button> &nbsp;
+            <mat-radio-button value="female" name="gender">Female</mat-radio-button>
+        </mat-radio-group>
+
+        <p>
+            <mat-form-field style="width: 70%;">
+            <mat-label>Password <span style="color: red;">*</span></mat-label>
+
+            <input type="password" matInput [(ngModel)]="password" formControlName="password">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field style="width: 70%;">
+            <mat-label>Confirm Password <span style="color: red;">*</span></mat-label>
+
+            <input type="password" matInput [(ngModel)]="confirmPassword"  [ngModelOptions]="{standalone: true}" >
+            </mat-form-field>
+        </p>
+
+        <p *ngIf="confirmPassword != password && (confirmPassword.length >0)">
+                <mat-label style="color: red;">Not valid</mat-label>
+        </p>
+
+        {{confirmPassword}} ---------- {{password}}
+
+        <button mat-button color="primary" type="submit" style="background-color: blueviolet; color: whitesmoke;">SIGNUP</button>
+
+        </form>
+    </mat-card-content>
+</mat-card>
