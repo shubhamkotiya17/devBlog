@@ -7,6 +7,8 @@
              <mat-label>First Name  <span style="color: red;">*</span></mat-label>
 
             <input type="text" matInput formControlName="firstName" >
+            <mat-error *ngIf="signupForm.get('firstName').hasError('required')" >first name is required</mat-error>
+
             </mat-form-field>
         </p>
 
@@ -15,6 +17,8 @@
                 <mat-label>Last Name <span style="color: red;">*</span></mat-label>
 
             <input type="text" matInput formControlName="lastName" >
+            <mat-error *ngIf="signupForm.get('lastName').hasError('required')" >last name is required</mat-error>
+
             </mat-form-field>
         </p>
 
@@ -36,24 +40,33 @@
 
         <p>
             <mat-form-field style="width: 70%;">
-            <mat-label>Password <span style="color: red;">*</span></mat-label>
+                <mat-label>Password <span style="color: red;">*</span></mat-label>
 
-            <input type="password" matInput [(ngModel)]="password" formControlName="password">
+                <input type="password" matInput  formControlName="password" >
+                <mat-error *ngIf="signupForm.get('password').hasError('required')" >Password is required</mat-error>
             </mat-form-field>
         </p>
 
         <p>
             <mat-form-field style="width: 70%;">
-            <mat-label>Confirm Password <span style="color: red;">*</span></mat-label>
+                <mat-label>Confirm Password <span style="color: red;">*</span></mat-label>
 
-            <input type="password" matInput [(ngModel)]="confirmPassword"  formControlName="confirmPassword">
-            </mat-form-field>
+                <input type="password" matInput formControlName="confirmPassword" [errorStateMatcher]="errorMatcher">
+                <mat-error *ngIf="signupForm.hasError('passwordsDoNotMatch')">
+                    Passwords do not match
+                </mat-error>     
+                     
+           </mat-form-field>
+
         </p>
+
 
        
 
-        <button mat-button color="primary" type="submit" style="background-color: blueviolet; color: whitesmoke;">SIGNUP</button>
+        <button mat-button color="primary" type="submit" style="background-color: blueviolet; color: whitesmoke;"  >SIGNUP</button>
 
         </form>
     </mat-card-content>
 </mat-card>
+
+<!-- [disabled]="!signupForm.valid" -->

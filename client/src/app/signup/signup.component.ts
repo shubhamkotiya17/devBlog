@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, Validator, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, Validator, FormGroup, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+/** Error when the parent is invalid */
+class CrossFieldErrorMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return control.dirty && form.invalid ;
+  }
+}
 
 @Component({
   selector: 'app-signup',
@@ -7,10 +16,11 @@ import { FormBuilder, Validators, Validator, FormGroup } from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-  constructor(private fb: FormBuilder) { }
   password:string="";
   signupForm:FormGroup;
+  errorMatcher = new CrossFieldErrorMatcher();
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -20,12 +30,24 @@ export class SignupComponent implements OnInit {
       gender : ['', Validators.required],
       password : ['', Validators.required],
       confirmPassword: ['', Validators.required]
-    });
+    },
+      {
+        validator: this.passwordValidator
+      }
+    )
   }
-    
+     
   get f() { return this.signupForm.controls }
-   
-  getErrorMessage() {    
+
+// for matching password
+  passwordValidator(form: FormGroup) {
+    const condition = form.get('password').value !== form.get('confirmPassword').value;
+
+    return condition ? { passwordsDoNotMatch: true} : null;
+  }
+
+// not needed
+getErrorMessage() {        
     if (this.f.email.hasError('required')) {
       return 'You must enter a value';
     }
