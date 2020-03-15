@@ -1,5 +1,7 @@
-const env = require('env');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = {
-    // 'secret' : env.
+    secret : process.env.mysecret,
+    port : process.env.port
 }
