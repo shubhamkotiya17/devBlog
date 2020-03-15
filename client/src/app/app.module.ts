@@ -18,6 +18,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_helpers/jwt-interceptor';
+import { ErrorInterceptor } from './_helpers/error-interceptor';
 
 
 @NgModule({
@@ -30,7 +33,7 @@ import { SignupComponent } from './signup/signup.component';
     ProfileComponent,
     LoginComponent,
     SignupComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -46,7 +49,10 @@ import { SignupComponent } from './signup/signup.component';
     MatNativeDateModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
