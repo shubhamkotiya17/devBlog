@@ -3,8 +3,12 @@ const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
 const config = require('./config');
+const auth = require('./api/auth');
 
 app.use(cors());
 app.use(bodyParser.json());
-    
- app.listen(config.port, () => console.log(`Your port is ${config.port}`))
+
+// ** authentication route ** //
+app.use('/auth',auth);
+
+app.listen(config.port, () => console.log(`Your port is ${config.port}`))
