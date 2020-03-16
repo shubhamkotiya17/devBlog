@@ -25,7 +25,7 @@ function createToken(user){
 //api- auth/signup
 router.post('/signup', (req, res) => {
     let encryptPassword = bcrypt.hashSync(req.body.password, 8); // encrypt pass 
-    let insertQuery = `insert into users (firstName,lastName,email,password) values ('${req.body.fname}','${req.body.lname}', '${req.body.email}', '${encryptPassword}')` ; 
+    let insertQuery = `insert into users (firstName,lastName,email,password) values ('${req.body.firstName}','${req.body.lastName}', '${req.body.email}', '${encryptPassword}')` ; 
     let user = {
         fullName : req.body.fname+"_"+req.body.lname,
         email : req.body.email
@@ -42,7 +42,7 @@ router.post('/signup', (req, res) => {
             res.json({
                 status : true,
                 message: `user inserted successfully!`,
-                insertedId : result.insertId,
+                user_id : result.insertId,
                 token : token
             })
         }
@@ -53,29 +53,33 @@ router.post('/signup', (req, res) => {
 // api- auth/login
 router.post('/login' ,(req, res) => {
     let pwd = req.body.password;
-    let selectQuery=`select password from users where email = '${req.body.email}'`;
+    let selectQuery=`select password , id as user_id from users where email = '${req.body.email}'`;
 
     db.query(selectQuery, (err, result) => {
+        console.log('err ', err, " ", result)
         if(err){
             res.json({
                 status : false,
-                message : "Error With Email Provided!",
+                message : "Error Occured In Query !",
                 error : err
             });
         }else{
             // email exists
-            if(result[0].password){
-               bcrypt.compare(pwd, result[0].password, (err, result) =>{
+            if(result.length>0 && result[0].password){
+                // console.log('result * ', result, " ", result[0]['user_id'])
+
+               bcrypt.compare(pwd, result[0].password, (err, result1) =>{
                         if(err){
                             console.log('bcrypt error ', err);
                             res.send('error in bcrypt');
                         } else {
-                            if(result){
+                            if(result1){
                                 // email & password matched !
                                 const token = createToken();
                                 res.json({
                                     status : true,
                                     message : "Login Success !",
+                                    data :{ user_id : result[0]['user_id']},
                                     token : token
                                 });
                             }else{
@@ -87,6 +91,11 @@ router.post('/login' ,(req, res) => {
                         }
                 });
                 
+            }else{
+                res.json({
+                    status:false,
+                    message : "Login Failed Wrong Credentials !"
+                });
             }
         }
     });
