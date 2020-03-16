@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
 
-<button mat-raised-button (click)="openDialog()" class="createBlog" >Create Blog</button>
+<button mat-raised-button  *ngIf="isLoggedIn" (click)="openDialog()" class="createBlog" >Create Blog</button>
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import { DialogComponent } from '../common/dialog/dialog.component';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -9,8 +10,10 @@ import { DialogComponent } from '../common/dialog/dialog.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private dialog: MatDialog) { }
+  isLoggedIn:boolean = false;
+  constructor(private dialog: MatDialog, private authenticationService : AuthenticationService) {
+        this.isLoggedIn = this.authenticationService.isLoggedIn();
+   }
 
   ngOnInit() {
   }
