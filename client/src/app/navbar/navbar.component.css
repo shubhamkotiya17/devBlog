@@ -2,3 +2,17 @@
     color: white !important; 
     background-color: tomato;
 }
+.example-spacer {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+
+
+ /* <button mat-raised-button
+ matTooltip="Subscribe To My Youtube Channel"
+ aria-label="Subscribe To My Youtube Channel">
+   <span style=" font-size: 30px; background-color: rgb(141, 64, 64);">
+     <a href="https://www.youtube.com/channel/UCVQ0gLN4U8BoxomGOd7DDcA?view_as=subscriber" target="_blank" style="color: red;"> <i class="fa fa-youtube" aria-hidden="true" ></i></a>
+   </span>  
+ </button> */

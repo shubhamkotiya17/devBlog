@@ -1,0 +1,29 @@
+<h2 mat-dialog-content>{{description}}</h2>
+
+<mat-dialog-content >
+    <form [formGroup]="createBlogForm" (ngSubmit)="onCreateBlog()">
+        <mat-form-field  style="width: 60%;">
+            <mat-label>Title <span style="color: red;">*</span></mat-label>
+
+            <input matInput  placeholder="guess a good title ..." formControlName="title"> 
+            <mat-error *ngIf="createBlogForm.get('title').hasError('required')">title is required</mat-error>
+
+        </mat-form-field>
+
+        <br><br><br>
+        <mat-form-field style="width: 90%;" appearance="outline">
+            <mat-label>Content <span style="color: red;">*</span></mat-label>
+
+            <textarea matInput placeholder="write something ..." formControlName="content"  rows="9" cols="40" ></textarea>
+
+            <mat-error *ngIf="createBlogForm.get('content').hasError('required')">content is required</mat-error>
+
+        </mat-form-field>
+        <br><br>
+
+            <button class="mat-raised-button mat-primary"  type="submit">Create Blog</button>
+
+        &nbsp;  <button class="mat-raised-button" (click)="close()">Close</button>
+    </form>
+</mat-dialog-content>
+

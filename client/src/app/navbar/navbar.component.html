@@ -3,21 +3,25 @@
     <mat-toolbar-row>
       <span class="menu-spacer"></span>
       <div>
-        <a mat-button [routerLink]="'/home'" routerLinkActive="active"> Home </a>
+       <a mat-button [routerLink]="'/home'" routerLinkActive="active"> Blogs </a>
         <a mat-button [routerLink]="'/about'" routerLinkActive="active">  About </a>
-        <a mat-button [routerLink]="'/profile'" routerLinkActive="active"> Profile </a>&nbsp; &nbsp;
-       <!-- // youtube link to my channel -->
-        <button mat-raised-button
-        matTooltip="Subscribe To My Youtube Channel"
-        aria-label="Subscribe To My Youtube Channel">
-          <span style=" font-size: 30px; background-color: whitesmoke;">
-            <a href="https://www.youtube.com/channel/UCVQ0gLN4U8BoxomGOd7DDcA?view_as=subscriber" target="_blank" style="color: red;"> <i class="fa fa-youtube" aria-hidden="true" ></i></a>
-          </span>  
-        </button>
-      </div>
+        <a mat-button [routerLink]="'/profile'" *ngIf="isLoggedIn" routerLinkActive="active"> Profile </a>&nbsp; &nbsp;
+     </div>
+     <span class="example-spacer"></span>
+
+     <div *ngIf="!isLoggedIn">
+        <button mat-raised-button (click)="login()">LOGIN/SIGNUP</button>
+    </div>
+
+    <div *ngIf="isLoggedIn">
+      <button mat-raised-button (click)="logout()" >LOGOUT</button>
+  </div>
+
     </mat-toolbar-row>
+
+    
+  </mat-toolbar> 
   
-  </mat-toolbar>
 
 
 <router-outlet></router-outlet>

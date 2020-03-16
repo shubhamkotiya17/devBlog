@@ -53,6 +53,16 @@ export class AuthenticationService {
       
    }
 
+   // check if user log in
+  public isLoggedIn(){
+
+    if(this.currentUserValue){
+           return true;
+      }
+    return  false;
+      
+   }
+
    logout() {
      localStorage.removeItem('currentUser');
      this.currentUserSubject.next(null);
