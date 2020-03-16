@@ -16,11 +16,50 @@ router.post('/createBlog' ,(req, res) => {
             }else{
                 res.json({
                     status : true,
-                    response : dataResponse
+                    data : dataResponse
                 })
             }
     });
     
 });
 
+// api - get blog by blog id
+router.get('/getBlog/:blogid', (req, res) => {
+    // console.log('req in get blog ++++ ', req.params.blogid)
+    let body = {};
+    body.id = req.params.blogid;
+    // console.log('bodyyyyy ', body)
+    blogService.getBlog(body, (err,  dataResponse) => {
+        if(err){
+            res.json({
+                status : false,
+                response : dataResponse
+            })
+        }else{
+            res.json({
+                status : true,
+                data : dataResponse
+            })
+        }
+    });
+});
+
+//api - getAllBlogs
+router.get('/getAllBlogs/:userid', (req, res) => {
+    let body = {};
+    body.userid = req.params.userid;
+    blogService.getAllBlogs(body, (err,  dataResponse) => {
+        if(err){
+            res.json({
+                status : false,
+                response : dataResponse
+            })
+        }else{
+            res.json({
+                status : true,
+                data : dataResponse
+            })
+        }
+    });
+})
 module.exports = router;

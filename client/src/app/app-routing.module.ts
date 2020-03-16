@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { ViewblogComponent } from './viewblog/viewblog.component';
 
 
 // const routes: Routes = [
@@ -75,6 +76,11 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
         canActivate: [AuthGuard]
+    },
+    {
+      path: 'viewblog/:blogid',
+      component: ViewblogComponent,
+      canActivate: [AuthGuard]
     },
     { 
       path: '**', 

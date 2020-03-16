@@ -12,8 +12,19 @@ export class BlogService {
   private api:string = environment.api ;
   constructor(private http: HttpClient) { }
 
+//create blog
   createBlog(blog : Blog){
     return this.http.post<any>(`${this.api}/blog/createBlog`, blog);
+  }
+
+  // get a blog by id
+  getBlog(blogid){
+    return this.http.get<any>(`${this.api}/blog/getBlog/${blogid}`);
+
+  }
+// get all blogs list for home
+  getAllBlogs(userid:number){
+    return this.http.get<any>(`${this.api}/blog/getAllBlogs/${userid}`);
 
   }
 }
