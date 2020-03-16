@@ -21,12 +21,15 @@ import { SignupComponent } from './signup/signup.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers/jwt-interceptor';
 import { ErrorInterceptor } from './_helpers/error-interceptor';
-import { LoaderService } from './service/loader.service';
+import { LoaderService } from './services/loader.service';
 import { LoaderComponent } from './_helpers/loader/loader.component';
 import { LoaderInterceptor } from './_helpers/loader-interceptor';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './common/dialog/dialog.component';
+import { ViewblogComponent } from './viewblog/viewblog.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { DialogComponent } from './common/dialog/dialog.component';
     LoginComponent,
     SignupComponent,
     LoaderComponent,
-    DialogComponent
+    DialogComponent,
+    ViewblogComponent
     ],
   imports: [
     BrowserModule,
@@ -47,6 +51,7 @@ import { DialogComponent } from './common/dialog/dialog.component';
     MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatExpansionModule,
     MatCardModule,
     MatRadioModule,
     MatTooltipModule,

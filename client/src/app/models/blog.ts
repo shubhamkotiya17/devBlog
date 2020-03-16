@@ -1,10 +1,10 @@
 export class Blog {
-    user_id : number ;
+    id : number ;
     title : string;
     content : string;
 
-    constructor(user_id : number , title : string, content : string) {
-            this.user_id = user_id;
+    constructor(id : number , title : string, content : string) {
+            this.id = id;
             this.title = title;
             this.content = content;
     }

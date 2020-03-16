@@ -3,4 +3,20 @@
 
 <button mat-raised-button  *ngIf="isLoggedIn" (click)="openDialog()" class="createBlog" >Create Blog</button>
 
+<br>
+<br>
+<br>
+<br>
+<div *ngFor="let b of allBlogs" style="margin-left: 20px; "> 
+    <mat-card >
+        <mat-card-header>
+            <mat-card-title>{{b?.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{b?.content}} ....<span>  <button mat-button style="color: blue" (click)="readMore()">read more </button></span></p>
 
+        </mat-card-content>
+    </mat-card>
+    <hr>
+</div>
+ 

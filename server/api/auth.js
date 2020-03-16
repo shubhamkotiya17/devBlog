@@ -42,7 +42,7 @@ router.post('/signup', (req, res) => {
             res.json({
                 status : true,
                 message: `user inserted successfully!`,
-                user_id : result.insertId,
+                data :{ user_id :  result.insertId},
                 token : token
             })
         }

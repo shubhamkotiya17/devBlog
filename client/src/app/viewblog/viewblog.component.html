@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<mat-card  style="width: 60%; height: 60%; margin-top: 30px; margin-left: 20px;">
+    <button style="margin-left: 90%; "  matTooltip="delete your blog"><i class="fa fa-trash" aria-hidden="true" style="font-size: 15px;"></i></button>
+    &nbsp;
+    <button matTooltip="update your blog"><i class="fa fa-pencil" aria-hidden="true" style="font-size: 15px; "></i></button>
+
+    <mat-card-header>
+        <mat-card-title>{{blogData?.title}}</mat-card-title>
+    </mat-card-header>
+
+        <mat-card-content style="margin-left: 12px;">
+                <br><br><br>
+                <mat-form-field style="width: 90%;" >
+                    <textarea matInput value="{{blogData?.content}}"  rows="9" cols="40" readonly></textarea>
+                </mat-form-field>
+                <br><br>
+        </mat-card-content>
+</mat-card>
