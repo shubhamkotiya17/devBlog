@@ -18,10 +18,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './_helpers/jwt-interceptor';
 import { ErrorInterceptor } from './_helpers/error-interceptor';
-
+import { LoaderService } from './service/loader.service';
+import { LoaderComponent } from './_helpers/loader/loader.component';
+import { LoaderInterceptor } from './_helpers/loader-interceptor';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,13 @@ import { ErrorInterceptor } from './_helpers/error-interceptor';
     AboutComponent,
     ProfileComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoaderComponent
     ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
     MatRadioModule,
@@ -45,6 +50,7 @@ import { ErrorInterceptor } from './_helpers/error-interceptor';
     MatDatepickerModule,
     MatInputModule,
     MatToolbarModule,MatIconModule,MatSidenavModule,MatListModule,MatButtonModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     BrowserAnimationsModule
@@ -52,6 +58,8 @@ import { ErrorInterceptor } from './_helpers/error-interceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
