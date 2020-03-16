@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
-  constructor(private fb:FormBuilder,private authenticationService:AuthenticationService,private router:Router) { 
+  constructor(private fb:FormBuilder,
+    private authenticationService:AuthenticationService,
+    private router:Router) { 
       if(this.authenticationService.currentUserValue){
         this.router.navigate(['/home'])
       }
@@ -23,10 +25,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
+  loaderTest(){
+      this.authenticationService.loaderTest()
+      .subscribe(test => console.log(test))
+  }
+
+  get f() { return this.loginForm.controls ; }
 
   onLogin(){
-    
+      this.authenticationService.login(this.f.email.value, this.f.password.value)
+      .subscribe(res => {
+            // console.log('response of login api * ', res);
+            if(res.status){
+              this.router.navigate(['/home'])
+            }else{
+                console.log(`error occured !!`);
+                
+            }
+      });
   }
 
 }

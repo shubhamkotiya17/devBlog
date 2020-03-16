@@ -92,8 +92,8 @@ router.post('/login' ,(req, res) => {
     });
 });
 
-// for testing purpose 
-router.get('/getUsersTest', jwt_middleware.checkToken, (req, res)=>{
+// for testing purpose jwt_middleware.checkToken
+router.get('/getUsersTest', (req, res)=>{
         db.query("select * from users", (err, result) => {
                 if(err){
                     res.send('error in getUsers');
