@@ -8,19 +8,54 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './_helpers/auth.guard';
 
 
+// const routes: Routes = [
+//   {
+//     path: '',
+//     redirectTo: 'home',
+//     pathMatch: 'full'
+//   },
+//   {
+//     path : '',
+//     component : NavbarComponent,
+//     children : [
+//       {
+//         path : 'login',
+//         component : LoginComponent
+//       },
+//       {
+//         path : 'signup',
+//         component : SignupComponent
+//       },
+//       {
+//         path: 'home',
+//         component: HomeComponent
+//       },
+//       {
+//         path: 'about',
+//         component: AboutComponent
+//       },
+//       {
+//         path: 'profile',
+//         component: ProfileComponent
+//       }
+//     ]
+//   },
+//   { 
+//     path: '**', 
+//     component: 
+//     PageNotFoundComponent
+//   }
+// ];
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path : '',
-    component : NavbarComponent,
-    children : [
-      {
+    {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
+     {
         path : 'login',
         component : LoginComponent
       },
@@ -38,15 +73,14 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        component: ProfileComponent
-      }
-    ]
-  },
-  { 
-    path: '**', 
-    component: 
-    PageNotFoundComponent
-  }
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
+    },
+    { 
+      path: '**', 
+      component: 
+      PageNotFoundComponent
+    }
 ];
 
 @NgModule({

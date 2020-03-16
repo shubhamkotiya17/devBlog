@@ -23,7 +23,7 @@ export class AuthenticationService {
       return this.currentUserSubject.value;
    }
 
-
+// for testing purpose
    loaderTest(){
      return this.http.get<any>(`${this.api}/auth/getUsersTest`);
    }
@@ -50,6 +50,16 @@ export class AuthenticationService {
               this.currentUserSubject.next(user.token);
               return user;
          }))   
+      
+   }
+
+   // check if user log in
+  public isLoggedIn(){
+
+    if(this.currentUserValue){
+           return true;
+      }
+    return  false;
       
    }
 

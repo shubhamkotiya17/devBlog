@@ -25,6 +25,8 @@ import { LoaderService } from './service/loader.service';
 import { LoaderComponent } from './_helpers/loader/loader.component';
 import { LoaderInterceptor } from './_helpers/loader-interceptor';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './common/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +38,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ProfileComponent,
     LoginComponent,
     SignupComponent,
-    LoaderComponent
+    LoaderComponent,
+    DialogComponent
     ],
   imports: [
     BrowserModule,
     FormsModule,
+    MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
@@ -55,6 +59,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatNativeDateModule,
     BrowserAnimationsModule
   ],
+  entryComponents: [DialogComponent],
+
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

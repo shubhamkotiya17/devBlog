@@ -1,0 +1,7 @@
+.createBlog {
+    float: left; margin-top: 1%; width: 10%; height: 5%; background-color: #ff6347; color: white;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+}
