@@ -53,10 +53,9 @@ router.post('/signup', (req, res) => {
 // api- auth/login
 router.post('/login' ,(req, res) => {
     let pwd = req.body.password;
-    let selectQuery=`select password , id as user_id from users where email = '${req.body.email}'`;
+    let selectQuery=`select firstName, lastName, password , id as user_id from users where email = '${req.body.email}'`;
 
     db.query(selectQuery, (err, result) => {
-        console.log('err ', err, " ", result)
         if(err){
             res.json({
                 status : false,
@@ -79,7 +78,7 @@ router.post('/login' ,(req, res) => {
                                 res.json({
                                     status : true,
                                     message : "Login Success !",
-                                    data :{ user_id : result[0]['user_id']},
+                                    data :{ user_id : result[0]['user_id'], user: result[0]['firstName']+" "+ result[0]['lastName']},
                                     token : token
                                 });
                             }else{
