@@ -13,9 +13,18 @@
         <button mat-raised-button (click)="login()">LOGIN/SIGNUP</button>
     </div>
 
-    <div *ngIf="isLoggedIn">
-      <button mat-raised-button (click)="logout()" >LOGOUT</button>
-  </div>
+    <div *ngIf="isLoggedIn" style="margin-right: 80px;">
+      <mat-menu #appMenu="matMenu">
+         <button mat-menu-item (click)="logout()" >LOGOUT &nbsp;<span style="color: orangered; font-size: 15px; font-weight: 800;">{{ userData.data.user }}</span></button>
+
+      </mat-menu>
+
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <i class="fa fa-user-circle" aria-hidden="true" mat-raised-button style="font-size: 45px;"></i>
+      </button>
+    </div>
+
+    
 
     </mat-toolbar-row>
 

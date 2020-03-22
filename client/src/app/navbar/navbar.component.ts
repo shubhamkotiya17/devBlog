@@ -9,11 +9,18 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn:boolean=false;
+  userData:any;
+
   constructor(
               private router : Router,
               private authenticationService : AuthenticationService
     ) {
            this.isLoggedIn = this.authenticationService.isLoggedIn()
+           if(this.isLoggedIn){          
+            this.userData = this.authenticationService.currentUserValue ;
+            // console.log('nv bar -=== ', this.userData);
+            
+        }
    }
 
   ngOnInit() {

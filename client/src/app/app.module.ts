@@ -29,6 +29,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './common/dialog/dialog.component';
 import { ViewblogComponent } from './viewblog/viewblog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     MatDialogModule,
     HttpClientModule,
+    MatMenuModule,
     ReactiveFormsModule,
     MatExpansionModule,
     MatCardModule,
