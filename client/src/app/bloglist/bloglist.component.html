@@ -1,7 +1,9 @@
 <div *ngFor="let b of allBlogs; let i = index" style="margin-left: 20px; "> 
     <mat-card style="width: 50%;">
         <mat-card-header>
-            <mat-card-title style="color: orangered;">{{b?.title}}</mat-card-title>
+            <mat-card-title ><a style="color: orangered;" *ngIf="componentName == 'profile' ; else home" [routerLink]="['/viewblog', b.id]" matTooltip="edit blog">{{b?.title}}</a></mat-card-title>
+            <mat-card-title style="color: orangered;" *ngIf="componentName == 'home'">{{b?.title}}</mat-card-title>
+
         </mat-card-header>
         <mat-card-content style="margin-left: 20px; ">
             <p *ngIf="b.content.length > 100 && i != blog_index ; else readLess" style="display: inline;">{{b?.content.substring(0,100)}} ....

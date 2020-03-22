@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   allBlogs:Blog;
   userData:any;
+  componentName:string="profile";
 
   constructor(private blogService : BlogService,
              private authenticationService : AuthenticationService
