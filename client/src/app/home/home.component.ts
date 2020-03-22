@@ -16,20 +16,16 @@ export class HomeComponent implements OnInit {
   userData:any;
   allBlogs:Blog;
 
-  /// reading a blog
-  blog_index:number = -1;
-
   constructor(private dialog: MatDialog, 
               private authenticationService : AuthenticationService,
               private blogService : BlogService,
-              private authService : AuthenticationService
               ) {
         this.isLoggedIn = this.authenticationService.isLoggedIn();
         if(this.isLoggedIn){          
-            this.userData = this.authService.currentUserValue ;
+            this.userData = this.authenticationService.currentUserValue ;
             this.getAllBlogs(this.userData.data.user_id)
         }else{
-            this.getAllBlogs(9); // on no user 
+            this.getAllBlogs(-1); // on no user 
         }
 
    }
@@ -39,14 +35,11 @@ export class HomeComponent implements OnInit {
 
   // get all blogs
   getAllBlogs(user_id){
-    // console.log('user_id ', user_id);
-    
       this.blogService.getAllBlogs(user_id)
       .subscribe(res => {
         if(res.status){
             this.allBlogs = res.data.data;
-            // console.log('all blogs ', this.allBlogs);
-            
+            console.log('all blogs ', this.allBlogs);
         }
       })
   }
@@ -61,11 +54,6 @@ export class HomeComponent implements OnInit {
           height: '600px',
           width: '900px',
       });
-  }
-
-  readMore(index:number){
-    this.blog_index = index;
-    
   }
 
 }

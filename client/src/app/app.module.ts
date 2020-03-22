@@ -30,6 +30,7 @@ import { DialogComponent } from './common/dialog/dialog.component';
 import { ViewblogComponent } from './viewblog/viewblog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
+import { BloglistComponent } from './bloglist/bloglist.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatMenuModule} from '@angular/material/menu';
     SignupComponent,
     LoaderComponent,
     DialogComponent,
-    ViewblogComponent
+    ViewblogComponent,
+    BloglistComponent
     ],
   imports: [
     BrowserModule,

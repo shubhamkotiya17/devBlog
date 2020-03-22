@@ -1,3 +1,15 @@
 <app-navbar></app-navbar>
+<br>
 
-<p>profile works!</p>
+<mat-card class="myBlogs">
+    <mat-card-header>
+        <mat-card-title style="color: blue;">
+             &nbsp; <i class="fa fa-th-large" aria-hidden="true" style="font-weight: 300;"> MY BLOGS</i>
+       </mat-card-title>
+    </mat-card-header>
+</mat-card>
+
+<br>
+<br>
+
+<app-bloglist [allBlogs]="allBlogs"></app-bloglist>

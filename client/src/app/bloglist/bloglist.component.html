@@ -1,0 +1,18 @@
+<div *ngFor="let b of allBlogs; let i = index" style="margin-left: 20px; "> 
+    <mat-card style="width: 50%;">
+        <mat-card-header>
+            <mat-card-title style="color: orangered;">{{b?.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="margin-left: 20px; ">
+            <p *ngIf="b.content.length > 100 && i != blog_index ; else readLess" style="display: inline;">{{b?.content.substring(0,100)}} ....
+            </p>
+
+            <ng-template #readLess>{{b?.content}}</ng-template>
+
+            <button mat-button (click)="readMore(i)" style="color: blue ;display: inline;" *ngIf="i != blog_index && b.content.length > 100"> read more </button>
+
+        </mat-card-content>
+    </mat-card>
+    <br>
+<mat-divider style="width: 53%;"></mat-divider><br>
+</div>

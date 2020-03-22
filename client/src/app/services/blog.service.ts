@@ -27,4 +27,10 @@ export class BlogService {
     return this.http.get<any>(`${this.api}/blog/getAllBlogs/${userid}`);
 
   }
+
+  // get all blgs for profile only logged in user's blog
+  getAllBlogsForProfile(userid:number) {
+    return this.http.get<any>(`${this.api}/blog/getAllBlogsForProfile/${userid}`);
+
+  }
 }

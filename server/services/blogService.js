@@ -40,6 +40,20 @@ const blogService  = {
 
                 }
             });
+        },
+
+        getAllBlogsForProfile : (body, callback) => {
+            let selectQuery = `select * from blog where user_id = ${body.userid}`;
+            db.query(selectQuery, (err, result) => {
+                if(err){
+                    callback(err, {data : null, errorMessage: err, message : "An error occured while getting all blogs for Profile !"});
+                }else{
+                    if(result.length > 0)
+                      callback(null, {data: result ,errorMessage:null, message:"All blog Fetched Success !"});
+                    else
+                      callback(null, {data: result ,errorMessage:null, message:"No Blog Exists !"});
+                }
+            });
         }
 }
 
