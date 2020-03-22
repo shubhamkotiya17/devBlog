@@ -9,6 +9,7 @@ import { Blog } from '../models/blog';
 export class BloglistComponent implements OnInit {
 
   @Input('allBlogs') allBlogs:Blog;
+  @Input("componentName") componentName:string;
   blog_index:number = -1;
 
   constructor() { }

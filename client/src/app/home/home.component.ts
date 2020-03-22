@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   isLoggedIn:boolean = false;
   userData:any;
   allBlogs:Blog;
-
+  componentName:string="home";
+  
   constructor(private dialog: MatDialog, 
               private authenticationService : AuthenticationService,
               private blogService : BlogService,
